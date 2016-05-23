@@ -6539,10 +6539,20 @@ public class JournalArticleLocalServiceImpl
 			body = JournalUtil.getEmailArticleUpdatedBody(preferences);
 		}
 
+		String articleContent = StringPool.BLANK;
+		try {
+			articleContent = getArticleContent(article, null, Constants.VIEW,
+				LocaleUtil.toLanguageId(LocaleUtil.getSiteDefault()),
+				serviceContext.getThemeDisplay());
+		} catch (Exception e) {
+		}
+
 		SubscriptionSender subscriptionSender = new SubscriptionSender();
 
 		subscriptionSender.setBody(body);
 		subscriptionSender.setCompanyId(article.getCompanyId());
+		subscriptionSender.setContextAttribute(
+			"[$ARTICLE_CONTENT$]", articleContent, false);
 		subscriptionSender.setContextAttributes(
 			"[$ARTICLE_ID$]", article.getArticleId(), "[$ARTICLE_TITLE$]",
 			article.getTitle(serviceContext.getLanguageId()), "[$ARTICLE_URL$]",

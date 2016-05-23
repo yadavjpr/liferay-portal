@@ -173,6 +173,12 @@ String emailBody = PrefsParamUtil.getString(portletPreferences, request, emailBo
 
 				<dl>
 					<dt>
+						[$ARTICLE_CONTENT$]
+					</dt>
+					<dd>
+						<liferay-ui:message key="the-article-content" />
+					</dd>
+					<dt>
 						[$ARTICLE_ID$]
 					</dt>
 					<dd>
