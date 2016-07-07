@@ -339,6 +339,7 @@ AUI.add(
 							var rowsPerPage = state.rowsPerPage;
 							var total = state.total;
 
+							pagination.set(STR_PAGE, state.page);
 							pagination.set('results', total);
 							pagination.set(STR_TOTAL, instance._getTotalPages(total, rowsPerPage));
 							pagination.set('visible', (total > rowsPerPage));
